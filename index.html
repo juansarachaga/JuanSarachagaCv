@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juan Pablo Saráchaga - CV Moderno</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Estilos CSS -->
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #1a1a1a;
@@ -139,6 +139,23 @@
             left: 0;
             z-index: 0;
         }
+        /* Estilos para el mensaje emergente */
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00a8ff;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
     </style>
     <!-- Librería de partículas -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -178,6 +195,7 @@
                     <ul>
                         <li>Definición, ideación y desarrollo de la implementación digital de funciones administrativas relacionadas con licitaciones y compras de insumos médicos.</li>
                         <li>El sistema está en producción y gestiona aproximadamente 400 contrataciones mensuales.</li>
+                        <li>Implementación de un módulo de IA para la generación automática de informes y análisis de datos utilizando herramientas como OpenAI.</li>
                     </ul>
                 </li>
                 <li>
@@ -185,12 +203,15 @@
                     <ul>
                         <li>Desarrollo completo de sitios web para empresas emergentes.</li>
                         <li>Mantenimiento y optimización de sitios web existentes.</li>
+                        <li>Implementación de herramientas de inteligencia artificial para la generación automatizada de contenido y mejora de la experiencia del usuario.</li>
+                        <li>Integración de APIs de IA (como OpenAI) para funcionalidades avanzadas, como chatbots y generación de texto dinámico.</li>
                         <li>Proyectos destacados:
                             <ul class="project-links">
                                 <li><a href="https://frigorificofederal.com/" target="_blank">Frigorífico Federal S.A.</a></li>
                                 <li><a href="https://expresivamente.com/" target="_blank">Expresivamente</a></li>
                                 <li><a href="https://centrolist.com.ar/" target="_blank">Centro estético List</a></li>
                                 <li><a href="https://floresadry.com/" target="_blank">Florería Flores Adry</a></li>
+                                <li><a href="https://soypaulamartinezok.com/" target="_blank">Soy Paula Martínez</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -224,13 +245,15 @@
             <ul class="skills-list">
                 <li><strong>Hard Skills:</strong>
                     <ul>
-                        <li>Dominio avanzado de C#, Python y JavaScript.</li>
+                        <li>Experiencia trabajando con C#, Python y JavaScript.</li>
                         <li>Experiencia en el desarrollo de aplicaciones web.</li>
                         <li>Diseño y desarrollo de ApiRest.</li>
                         <li>Uso experto de Frameworks como EntityFramework Core.</li>
                         <li>Conocimientos en bases de datos relacionales (SQL).</li>
                         <li>Uso de Git para el control de versiones.</li>
                         <li>Desarrollo en WordPress.</li>
+                        <li>Manejo de herramientas de inteligencia artificial (IA) para generación de contenido y automatización mediante prompts.</li>
+                        
                     </ul>
                 </li>
                 <li><strong>Soft Skills:</strong>
@@ -333,6 +356,24 @@
             },
             "retina_detect": true
         });
+
+        // Script para el mensaje emergente
+        let fontSize = 16; // Tamaño inicial de la fuente
+        function showPopup() {
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = '¿Qué esperas para contratarme?';
+            popup.style.fontSize = `${fontSize}px`; // Aplicar el tamaño de fuente
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                popup.remove();
+            }, 5000); // El mensaje desaparece después de 5 segundos
+
+            fontSize += 2; // Incrementar el tamaño de la fuente para la próxima vez
+        }
+
+        setInterval(showPopup, 20000); // Mostrar el mensaje cada 20 segundos
     </script>
 </body>
 </html>
