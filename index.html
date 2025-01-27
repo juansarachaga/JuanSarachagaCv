@@ -56,7 +56,7 @@
         .contact-info a {
             color: #00a8ff;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 30px;
             transition: color 0.3s ease;
         }
         .contact-info a:hover {
@@ -175,6 +175,16 @@
             animation: movePacman 10s linear infinite; /* Duración y repetición */
             z-index: 1000; /* Asegura que el GIF esté por encima de otros elementos */
         }
+
+        @media only screen and (max-width: 670px){
+            .contact-info a {
+            color: #00a8ff;
+            text-decoration: none;
+            font-size: 30px;
+            transition: color 0.3s ease;
+        }
+        }
+
     </style>
     <!-- Librería de partículas -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
