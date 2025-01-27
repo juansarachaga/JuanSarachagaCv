@@ -156,6 +156,25 @@
             from { transform: translateX(100%); }
             to { transform: translateX(0); }
         }
+
+        /* Animación para Pac-Man */
+        @keyframes movePacman {
+            0% {
+                left: -100px; /* Comienza fuera de la pantalla a la izquierda */
+            }
+            100% {
+                left: 100%; /* Termina fuera de la pantalla a la derecha */
+            }
+        }
+
+        .pacman {
+            position: fixed;
+            top: 20px; /* Ajusta la posición vertical según necesites */
+            width: 50px; /* Tamaño del GIF */
+            height: 50px;
+            animation: movePacman 10s linear infinite; /* Duración y repetición */
+            z-index: 1000; /* Asegura que el GIF esté por encima de otros elementos */
+        }
     </style>
     <!-- Librería de partículas -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -164,9 +183,13 @@
     <!-- Efecto de partículas -->
     <div id="particles-js"></div>
 
+    <!-- GIF de Pac-Man -->
+    <img id="pacman" src="https://media.tenor.com/JowhCmKT628AAAAi/oacmn.gif" alt="Pac-Man" style="display: none;">
+
     <!-- Contenido del CV -->
     <div class="container">
         <header>
+            
             <h1>Juan Pablo Saráchaga</h1>
             <p>Desarrollador de Software</p>
             <div class="contact-info">
@@ -253,7 +276,6 @@
                         <li>Uso de Git para el control de versiones.</li>
                         <li>Desarrollo en WordPress.</li>
                         <li>Manejo de herramientas de inteligencia artificial (IA) para generación de contenido y automatización mediante prompts.</li>
-                        
                     </ul>
                 </li>
                 <li><strong>Soft Skills:</strong>
@@ -356,6 +378,24 @@
             },
             "retina_detect": true
         });
+
+        // Script para mostrar el Pac-Man cada minuto
+     // Script para mostrar el Pac-Man cada minuto
+function showPacman() {
+    const pacman = document.createElement('img');
+    pacman.src = 'https://media.tenor.com/JowhCmKT628AAAAi/oacmn.gif';
+    pacman.alt = 'Pac-Man';
+    pacman.className = 'pacman';
+    document.body.appendChild(pacman);
+
+    // Eliminar el Pac-Man después de 10 segundos
+    setTimeout(() => {
+        pacman.remove();
+    }, 10000); // 10 segundos
+}
+
+// Mostrar el Pac-Man por primera vez después de 60 segundos
+setTimeout(showPacman, 60000);
 
         // Script para el mensaje emergente
         let fontSize = 16; // Tamaño inicial de la fuente
