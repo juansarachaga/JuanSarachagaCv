@@ -171,8 +171,41 @@
                 font-size: 30px;
             }
         }
+        /* Botón flotante */
+         .btn-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #00a8ff;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: background 0.3s ease, opacity 0.5s ease;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none; /* Evita clics cuando está oculto */
+        }
+        .btn-float:hover {
+            background: #9c88ff;
+        }
+        .btn-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2304BEPTM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-P2304BEPTM');
+      </script>
 </head>
 <body>
     <div id="particles-js"></div>
@@ -198,13 +231,14 @@
         </section>
         <section class="section">
             <h2>EXPERIENCIA LABORAL</h2>
-            <ul class="experience-list">
+           <ul class="experience-list">
                 <li>
                     <strong>Desarrollador de Software</strong> <em>Instituto Obra Medico Asistencial (IOMA), La Plata, Buenos Aires</em>
                     <ul>
-                        <li>Definición, ideación y desarrollo de la implementación digital de funciones administrativas relacionadas con licitaciones y compras de insumos médicos.</li>
-                        <li>El sistema está en producción y gestiona aproximadamente 400 contrataciones mensuales.</li>
-                        <li>Implementación de un módulo de IA para la generación automática de informes y análisis de datos utilizando herramientas como OpenAI.</li>
+                        <li>Definición, ideación y desarrollo de una solución digital para funciones administrativas relacionadas con licitaciones y compras de insumos médicos.</li>
+                        <li>Modelización digital de procesos del área de Compras del Instituto, incluyendo la definición de negocio, estructura de datos y desarrollo en Entity Framework Core.</li>
+                        <li>El sistema, actualmente en producción, gestiona aproximadamente 400 contrataciones mensuales.</li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -215,6 +249,7 @@
                         <li>Implementación de herramientas de inteligencia artificial para la generación automatizada de contenido y mejora de la experiencia del usuario.</li>
                         <li>Proyectos destacados:
                             <ul class="project-links">
+                                <li><a href="https://suacatering.com.ar/" target="_blank">Sua Catering</a> - Desarrollo íntegro configuración ecommerce</li>
                                 <li><a href="https://frigorificofederal.com/" target="_blank">Frigorífico Federal S.A.</a> - Desarrollo íntegro</li>
                                 <li><a href="https://soypaulamartinezok.com/" target="_blank">Soy Paula Martínez</a> - Desarrollo íntegro</li>
                                 <li><a href="https://expresivamente.com/" target="_blank">Expresivamente</a> - Desarrollo íntegro</li>
@@ -231,6 +266,10 @@
         <section class="section">
             <h2>EDUCACIÓN</h2>
             <ul class="project-links">
+                 <li>
+                    <strong>Tecnicatura Universitaria en Programación (cursando)</strong> 
+                    <em>Universidad Tecnológica Nacional (UTN)</em>
+                </li>
                 <li>
                     <strong><a href="https://drive.google.com/file/d/1EWxwnDHAYBtqHWo7lAjbXPhDqaPWJzjv/view?usp=sharing" target="_blank" class="education-links">Diplomatura en Python</a></strong> <em>Instituto Sicos Informática</em>
                 </li>
@@ -249,6 +288,9 @@
                 <li>
                     <strong><a href="https://drive.google.com/file/d/1iI8Zo6i770nCIk-Yyq-txt8ol1bPPesY/view?usp=sharing" target="_blank" class="education-links">Desarrollo de servicios Web con Node.js</a></strong> <em>Instituto Provincial de Administración Pública (IPAP)</em>
                 </li>
+                <li>
+                    <strong><a href="https://drive.google.com/file/d/1omh3sEY4PfAbWHapv_RtVjlbU57ApUfo/view?usp=sharing" target="_blank" class="education-links">Codo a Codo 4.0 - Full Stack Python</a></strong> <em>Instituto Provincial de Administración Pública (IPAP)</em>
+                </li>
             </ul>
         </section>
         <section class="section">
@@ -256,16 +298,17 @@
             <ul class="skills-list">
                 <li><strong>Hard Skills:</strong>
                     <ul>
-                        <li>Experiencia trabajando con C#, Python y JavaScript.</li>
-                        <li>Experiencia en el desarrollo de aplicaciones web.</li>
-                        <li>Diseño y desarrollo de ApiRest.</li>
-                        <li>Uso experto de Frameworks como EntityFramework Core.</li>
-                        <li>Conocimientos en bases de datos relacionales (SQL).</li>
-                        <li>Uso de Git para el control de versiones.</li>
-                        <li>Desarrollo en WordPress.</li>
-                        <li>Desarrollo de eCommerce.</li>
-                        <li>Manejo de herramientas de inteligencia artificial (IA) para generación de contenido y automatización mediante prompts.</li>
-                    </ul>
+    <li>Desarrollo de aplicaciones con C#, Python y JavaScript.</li>
+    <li>Creación de aplicaciones web funcionales.</li>
+    <li>Diseño y desarrollo de APIs REST.</li>
+    <li>Uso de Entity Framework Core.</li>
+    <li>Gestión de bases de datos relacionales (SQL).</li>
+    <li>Manejo de Git para control de versiones.</li>
+    <li>Implementación de sitios con WordPress.</li>
+    <li>Desarrollo de eCommerce personalizados.</li>
+    <li>Optimización web con herramientas de SEO y Google Analytics.</li>
+    <li>Familiaridad con herramientas de inteligencia artificial para generación de contenido mediante prompts.</li>
+</ul>
                 </li>
                 <li><strong>Soft Skills:</strong>
                     <ul>
@@ -281,7 +324,14 @@
             </ul>
         </section>
     </div>
-    <script>
+   
+ <a href="geek.html" class="btn-float" id="btnGeek" title="Ver versión Geek">Versión Geek</a>
+</body>
+</html>
+
+
+
+ <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": {
@@ -379,6 +429,8 @@
             const iconPosition = socialIcons.getBoundingClientRect().top;
             pacman.style.top = `${iconPosition}px`;
 
+            const boton = document.getElementById("btnGeek");
+
             setTimeout(() => {
                 socialIcons.style.opacity = '0';
             }, 5000);
@@ -408,6 +460,22 @@
         }
 
         setInterval(showPopup, 30000);
+
+          const boton = document.getElementById("btnGeek");
+
+        function cicloBoton() {
+            // Mostrar después de 10 segundos
+            setTimeout(() => {
+                boton.classList.add("btn-visible");
+
+                // Ocultar después de 4 segundos
+                setTimeout(() => {
+                    boton.classList.remove("btn-visible");
+                    cicloBoton(); // Repetir ciclo
+                }, 4000);
+
+            }, 10000);
+        }
+
+        cicloBoton(); // Inicia el bucle
     </script>
-</body>
-</html>

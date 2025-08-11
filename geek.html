@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juan Pablo Saráchaga — CV (Star Wars Crawl)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#000;
+      --sw-yellow:#ffe81f;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      overflow:hidden;
+      font-family:'Pathway Gothic One', Arial, sans-serif;
+    }
+
+    /* Fondo de estrellas */
+    #starfield{ position:fixed; inset:0; z-index:-1; pointer-events:none; }
+    @keyframes drift { from{transform:translateY(0)} to{transform:translateY(-200px)} }
+    #starfield svg{ width:100%; height:100%; display:block; animation:drift 80s linear infinite; }
+
+    /* Contenedor y texto */
+    .stage{
+      position:fixed; inset:0;
+      perspective:400px;
+      overflow:hidden;
+      display:flex; align-items:flex-end; justify-content:center;
+    }
+    .crawl{
+      width:min(760px,92vw);
+      transform-origin:50% 100%;
+      transform: rotateX(25deg) translateY(200vh);
+      animation:crawl 160s linear forwards;
+      color:var(--sw-yellow);
+      text-shadow:0 0 10px rgba(255,232,31,.25);
+      letter-spacing:.6px;
+      line-height:1.9;
+      font-size:clamp(16px,2.2vw,22px);
+      text-align:justify;
+    }
+    @keyframes crawl{
+      from{ transform: rotateX(25deg) translateY(200vh); }
+      to  { transform: rotateX(25deg) translateY(-440vh); }
+    }
+
+    .title{
+      text-align:center;
+      margin:0 0 1.2em;
+      font-size:clamp(24px,4vw,42px);
+      letter-spacing:2px;
+    }
+    .subtitle{
+      text-align:center;
+      margin:0 0 1.6em;
+      font-size:clamp(16px,2.6vw,26px);
+      letter-spacing:2px;
+    }
+    .section{
+      margin:1.2em 0 .6em;
+      text-transform:uppercase;
+      font-size:1.1em;
+      letter-spacing:2px;
+    }
+    .item{ margin:.4em 0; }
+    .small{ opacity:.9; }
+    a{ color:var(--sw-yellow); text-decoration:underline; }
+
+    /* Botón volver */
+    .back-btn{
+      position:fixed;
+      bottom:20px;
+      left:20px;
+      background:transparent;
+      border:2px solid var(--sw-yellow);
+      color:var(--sw-yellow);
+      padding:10px 18px;
+      font-size:16px;
+      font-family:'Pathway Gothic One', Arial, sans-serif;
+      letter-spacing:1px;
+      cursor:pointer;
+      z-index:10;
+      transition:all 0.3s ease;
+    }
+    .back-btn:hover{
+      background:var(--sw-yellow);
+      color:#000;
+      box-shadow:0 0 10px var(--sw-yellow),0 0 20px var(--sw-yellow);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .crawl{ animation:none; transform: rotateX(0) translateY(0); }
+      #starfield svg{ animation:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="starfield" aria-hidden="true"></div>
+
+  <button class="back-btn" onclick="location.href='https://juan-sarachaga-cv.vercel.app/'">Volver</button>
+
+
+  <div class="stage">
+    <div class="crawl">
+      <div class="title">JUAN PABLO SARÁCHAGA</div>
+      <div class="subtitle">DESARROLLADOR DE SOFTWARE</div>
+
+      <div class="section">Perfil</div>
+      <p class="item">
+        Desarrollador en constante formación, orientado a crear soluciones claras, escalables y eficientes.
+        Enfocado en aprendizaje continuo y en aportar valor real a equipos multidisciplinarios.
+      </p>
+
+      <div class="section">Contacto</div>
+      <p class="item small">
+        WhatsApp: <a href="https://wa.me/5492216427311" target="_blank">+54 9 221 642-7311</a> ·
+        Email: <a href="mailto:juan.sarachaga@gmail.com" target="_blank">juan.sarachaga@gmail.com</a> ·
+        LinkedIn: <a href="https://www.linkedin.com/in/juan-pablo-sar%C3%A1chaga-08583920b/" target="_blank">/in/juan-pablo-sarachaga</a>
+      </p>
+
+      <div class="section">Experiencia Laboral</div>
+      <p class="item">
+        <strong>Desarrollador de Software — IOMA (La Plata, Buenos Aires)</strong><br/>
+        • Definición, ideación y desarrollo de solución digital para licitaciones y compras de insumos médicos.<br/>
+        • Modelización de procesos del área de Compras: definición de negocio, estructura de datos y desarrollo en Entity Framework Core.<br/>
+        • Sistema en producción que gestiona ~400 contrataciones mensuales.
+      </p>
+      <p class="item">
+        <strong>Desarrollador Web Freelance — La Plata, Buenos Aires</strong><br/>
+        • Desarrollo end-to-end de sitios y eCommerce para pymes y emprendedores.<br/>
+        • Mantenimiento, performance y optimización con SEO y Google Analytics.<br/>
+        • Integración de herramientas de IA para generación de contenido y mejora de UX.<br/>
+        • Proyectos:
+        <a href="https://suacatering.com.ar/" target="_blank">Sua Catering</a>,
+        <a href="https://frigorificofederal.com/" target="_blank">Frigorífico Federal S.A.</a>,
+        <a href="https://soypaulamartinezok.com/" target="_blank">Soy Paula Martínez</a>,
+        <a href="https://expresivamente.com/" target="_blank">Expresivamente</a>,
+        <a href="https://centrolist.com.ar/" target="_blank">Centro estético List</a>,
+        <a href="https://floresadry.com/" target="_blank">Florería Flores Adry</a>,
+        <a href="https://gruponisen.com.ar/" target="_blank">Grupo Nisen</a>.
+      </p>
+
+      <div class="section">Educación</div>
+      <p class="item">
+        <strong>Actualmente cursando:</strong> Tecnicatura Universitaria en Programación — Universidad Tecnológica Nacional (UTN)
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1EWxwnDHAYBtqHWo7lAjbXPhDqaPWJzjv/view?usp=sharing" target="_blank">Diplomatura en Python</a> — Instituto Sicos Informática
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1xqrTK2rmqrD9Z3FTADobiyLEdCEIdflv/view?usp=sharing" target="_blank">Certificación en C#</a> — Instituto Sicos Informática
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1qlOEfix00GSERn7S6_b5CbIPkzKXQqkA/view?usp=sharing" target="_blank">Certificación en Desarrollo Web (HTML, CSS, jQuery)</a> — Instituto Sicos Informática
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1ZnWcjj8Gc3Kc0S2VvfAP4pwQX2Uwu9EB/view?usp=sharing" target="_blank">Certificación en Desarrollo en WordPress</a> — Instituto Sicos Informática
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1ZnWcjj8Gc3Kc0S2VvfAP4pwQX2Uwu9EB/view?usp=sharing" target="_blank">Introducción a PHP</a> — Instituto Provincial de Administración Pública (IPAP)
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1iI8Zo6i770nCIk-Yyq-txt8ol1bPPesY/view?usp=sharing" target="_blank">Desarrollo de servicios Web con Node.js</a> — IPAP
+      </p>
+      <p class="item">
+        <a href="https://drive.google.com/file/d/1omh3sEY4PfAbWHapv_RtVjlbU57ApUfo/view?usp=sharing" target="_blank">Codo a Codo 4.0 — Full Stack Python</a> — IPAP
+      </p>
+
+      <div class="section">Habilidades</div>
+      <p class="item">
+        <strong>Hard Skills:</strong> C#, Python, JavaScript; desarrollo de aplicaciones web y APIs REST; Entity Framework Core; bases de datos SQL; Git; WordPress; eCommerce; SEO; Google Analytics; IA aplicada a contenido/UX.
+      </p>
+      <p class="item">
+        <strong>Soft Skills:</strong> Comunicación efectiva; trabajo en equipo; resolución de problemas; adaptabilidad; pensamiento crítico; gestión de proyectos; experiencia con clientes.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('starfield');
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('preserveAspectRatio','none');
+      svg.setAttribute('viewBox','0 0 1000 1000');
+      root.appendChild(svg);
+
+      function makeStars(count, rmin, rmax, opacity){
+        const g = document.createElementNS(svgNS,'g');
+        g.setAttribute('opacity', opacity);
+        for(let i=0;i<count;i++){
+          const c = document.createElementNS(svgNS,'circle');
+          c.setAttribute('cx', (Math.random()*1000).toFixed(2));
+          c.setAttribute('cy', (Math.random()*1200).toFixed(2));
+          const r = rmin + Math.random()*(rmax-rmin);
+          c.setAttribute('r', r.toFixed(2));
+          c.setAttribute('fill', 'white');
+          g.appendChild(c);
+        }
+        return g;
+      }
+
+      svg.appendChild(makeStars(220, .3, .9, .6));
+      svg.appendChild(makeStars(140, .6, 1.4, .9));
+      svg.appendChild(makeStars(80,  1.0, 2.0, 1.0));
+
+      const twinkle = document.createElementNS(svgNS,'style');
+      twinkle.textContent = `
+        @keyframes tw { 50% { opacity:.5 } }
+        circle { animation: tw 7s ease-in-out infinite; }
+      `;
+      svg.appendChild(twinkle);
+
+      const onResize = () => {
+        root.style.width = innerWidth+'px';
+        root.style.height = innerHeight+'px';
+      };
+      onResize();
+      addEventListener('resize', onResize, {passive:true});
+    })();
+  </script>
+</body>
+</html>
