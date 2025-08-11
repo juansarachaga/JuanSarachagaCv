@@ -93,9 +93,32 @@
       box-shadow:0 0 10px var(--sw-yellow),0 0 20px var(--sw-yellow);
     }
 
+    /* Easter egg: R2-D2 */
+    #r2d2{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:90px;
+      height:auto;
+      opacity:0;                 /* oculto al inicio */
+      pointer-events:none;       /* no bloquea clics */
+      transition:opacity .6s ease;
+      z-index:11;
+    }
+    #r2d2.show{
+      opacity:1;
+      animation:bob 2.5s ease-in-out infinite;
+    }
+    @keyframes bob{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-6px)}
+      100%{transform:translateY(0)}
+    }
+
     @media (prefers-reduced-motion: reduce){
       .crawl{ animation:none; transform: rotateX(0) translateY(0); }
       #starfield svg{ animation:none; }
+      #r2d2{ animation:none; transition:none; }
     }
   </style>
 </head>
@@ -105,6 +128,8 @@
 
   <button class="back-btn" onclick="location.href='https://juan-sarachaga-cv.vercel.app/'">Volver</button>
 
+  <!-- Easter egg R2-D2 (inicia oculto) -->
+  <img id="r2d2" src="https://media.tenor.com/WcsxzKMRNv8AAAAi/star-wars-robot.gif" alt="R2-D2 saludando" loading="lazy"/>
 
   <div class="stage">
     <div class="crawl">
@@ -183,6 +208,7 @@
   </div>
 
   <script>
+    // Estrellas
     (function(){
       const root = document.getElementById('starfield');
       const svgNS = 'http://www.w3.org/2000/svg';
@@ -223,6 +249,23 @@
       };
       onResize();
       addEventListener('resize', onResize, {passive:true});
+    })();
+
+    // Easter egg R2-D2: aparece a los 10s por 4s y se repite
+    (function(){
+      const r2 = document.getElementById('r2d2');
+
+      function loop(){
+        setTimeout(() => {
+          r2.classList.add('show');    // aparece (fade in)
+          setTimeout(() => {
+            r2.classList.remove('show'); // se oculta (fade out)
+            loop(); // repetir ciclo
+          }, 4000);  // visible 4s
+        }, 10000);    // espera 10s
+      }
+
+      loop(); // inicia al cargar la página
     })();
   </script>
 </body>
