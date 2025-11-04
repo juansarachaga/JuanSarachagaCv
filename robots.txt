@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://juan-sarachaga-cv.vercel.app/sitemap.xml
+
