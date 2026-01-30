@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +11,8 @@
   <!-- SEO -->
   <meta name="description" content="Desarrollador de software en La Plata. APIs REST, .NET, Node.js, SQL y WordPress. Soluciones claras, escalables y mantenibles." />
   <link rel="canonical" href="https://juan-sarachaga-cv.vercel.app/" />
+  <link rel="canonical" href="https://juan-sarachaga-cv.vercel.app/" />
+
 
   <!-- Open Graph (WhatsApp / Facebook / LinkedIn) -->
   <meta property="og:type" content="website" />
@@ -22,6 +25,7 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Juan Pablo Saráchaga — Desarrollador de Software" />
+  
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -473,6 +477,35 @@
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important; transition:none!important; scroll-behavior:auto!important}
     }
+
+
+/* --- Ghost peek (abajo derecha) --- */
+.ghost-peek{
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  width: 90px;           /* ajustá tamaño */
+  height: auto;
+  z-index: 950;          /* por debajo del pacman (1000) */
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(120%, 120%);
+  will-change: transform, opacity;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
+}
+
+.ghost-peek.play{
+  animation: ghostPeek 3.2s ease-in-out both;
+}
+
+@keyframes ghostPeek{
+  0%   { opacity: 0; transform: translate(120%, 120%); }
+  18%  { opacity: 1; transform: translate(0%, 0%); }
+  70%  { opacity: 1; transform: translate(0%, 0%); }
+  100% { opacity: 0; transform: translate(120%, 120%); }
+}
+
+
   </style>
 
   <!-- Google Analytics -->
@@ -931,6 +964,80 @@
 
     setTimeout(showPacman, 60000);
     setInterval(showPacman, 60000);
+
+
+// --- GHOST PEEK (no se cruza con Pac-Man) ---
+(function(){
+    const GHOST_SRC = 'https://i.ibb.co/v6tSyKdW/giphy.gif';
+
+    // Intervalo aleatorio: “cada tanto”
+    const GHOST_MIN_MS = 35000;  // 35s
+    const GHOST_MAX_MS = 80000;  // 80s
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    // Crear el fantasma una sola vez
+    const ghost = document.createElement('img');
+    ghost.src = GHOST_SRC;
+    ghost.alt = 'Ghost';
+    ghost.className = 'ghost-peek';
+    document.body.appendChild(ghost);
+
+    let running = false;
+
+    function randBetween(min, max){
+      return Math.floor(min + Math.random() * (max - min));
+    }
+
+    function canRunNow(){
+      // Evitar simultaneidad con Pac-Man (si existe el elemento en pantalla)
+      const pacmanAlive = !!document.querySelector('.pacman');
+      return !pacmanAlive && !running;
+    }
+
+    function triggerGhost(){
+      if (!canRunNow()) return;
+
+      running = true;
+      ghost.classList.remove('play'); // reset por si quedó algo raro
+      // forzar reflow para reiniciar animación correctamente
+      void ghost.offsetWidth;
+      ghost.classList.add('play');
+
+      const onEnd = () => {
+        ghost.classList.remove('play');
+        ghost.removeEventListener('animationend', onEnd);
+        running = false;
+      };
+      ghost.addEventListener('animationend', onEnd);
+    }
+
+    function scheduleNext(){
+      const delay = randBetween(GHOST_MIN_MS, GHOST_MAX_MS);
+      setTimeout(() => {
+        // si no puede ahora, reintenta suave cada 5s hasta poder
+        if (!canRunNow()){
+          const retry = setInterval(() => {
+            if (canRunNow()){
+              clearInterval(retry);
+              triggerGhost();
+              scheduleNext();
+            }
+          }, 5000);
+        } else {
+          triggerGhost();
+          scheduleNext();
+        }
+      }, delay);
+    }
+
+    // arranca después de un ratito
+    setTimeout(scheduleNext, 12000);
+  })();
+
+
+    
   </script>
 </body>
 </html>
